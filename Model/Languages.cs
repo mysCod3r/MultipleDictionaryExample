@@ -9,7 +9,7 @@
 
     public static class LanguagesExtensions
     {
-        public static bool checkValidKeywordType(int userInput)
+        public static bool checkValidLanguage(int userInput)
         {
             return Enum.IsDefined(typeof(Languages), userInput);
         }

@@ -22,7 +22,12 @@ namespace MyDictionary.Core
             keywords.Add(keyword);
             return true;
         }
-        public bool remove(int index) => keywords.Remove(keywords[index]);
+        public bool remove(int index)
+        {
+            if (index >= keywords.Count || index < 0) return false;
+            return keywords.Remove(keywords[index]);
+        }
+
         public void clear() => keywords.Clear();
         public List<DictionaryKeywordItem> getAllKeyword()
         {

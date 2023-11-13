@@ -8,6 +8,7 @@ namespace MyDictionary.Utility
         static Helper() { }
         private Helper() { }
         public static Helper Instance => instance;
+        string _seperator = new string('-', 20);
 
         public int inputNumber(bool withCancel = false)
         {
@@ -40,17 +41,36 @@ namespace MyDictionary.Utility
                 Console.WriteLine("This list is empty.");
                 return;
             }
-            foreach (DictionaryKeywordItem item in items) _printKeywordWithSeperator(item);
+            for (int i = 0; i < items.Count; i++)
+            {
+                DictionaryKeywordItem item = items[i];
+                Console.WriteLine($"------{i}------");
+                _printKeywordWithSeperator(item);
+            }
+        }
 
+        public void printKeywordsStepByStep(List<DictionaryKeywordItem>? items)
+        {
+            if (items == null || items.Count == 0)
+            {
+                Console.WriteLine("This list is empty.");
+                return;
+            }
+            foreach (DictionaryKeywordItem item in items)
+            {
+                _printKeywordWithSeperator(item);
+                Console.WriteLine("Press any key to continue..");
+                Console.ReadKey();
+            }
+            Console.WriteLine(_seperator);
         }
 
         private void _printKeywordWithSeperator(DictionaryKeywordItem item)
         {
-            string seperator = new string('-', 20);
             Console.WriteLine(item.mainLanguage + ": " + item.keyword.word);
             Console.WriteLine(item.targetLanguage + ": " + item.keyword.mean);
             Console.WriteLine("Category: " + item.keyword.category);
-            Console.WriteLine(seperator);
+            Console.WriteLine(_seperator);
         }
     }
 }

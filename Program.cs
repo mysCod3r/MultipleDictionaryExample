@@ -76,7 +76,7 @@ namespace MyDictionary
                 Console.WriteLine(hintText);
                 LanguagesExtensions.writeAllLanguages();
                 int input = Helper.Instance.inputNumber();
-                if (!LanguagesExtensions.checkValidKeywordType(input))
+                if (!LanguagesExtensions.checkValidLanguage(input))
                 {
                     Console.WriteLine("You entered an invalid number! Try Again.");
                     return _selectLanguage(hintText);
@@ -157,7 +157,7 @@ namespace MyDictionary
             void _writeAllWithShuffle()
             {
                 List<DictionaryKeywordItem>? result = dicRepository.currentDictionary?.getAllKeywordRandom();
-                Helper.Instance.printKeywords(result);
+                Helper.Instance.printKeywordsStepByStep(result);
             }
             void _newKeyword()
             {
@@ -196,7 +196,7 @@ namespace MyDictionary
             {
                 KeywordCategoryExtensions.writeAllKeywordCategories();
                 int input = Helper.Instance.inputNumber();
-                if (!LanguagesExtensions.checkValidKeywordType(input))
+                if (!KeywordCategoryExtensions.checkValidKeywordCategory(input))
                 {
                     Console.WriteLine("You entered an invalid number! Try Again.");
                     return _selectKeywordCategory();
